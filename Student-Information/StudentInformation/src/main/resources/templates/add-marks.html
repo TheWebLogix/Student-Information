@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Person</title>
+</head>
+<body>
+<h1>Add Marks</h1>
+<a href="/persons/add">Add Students</a>
+
+<form th:action="@{/marks/add}" method="post" th:object="${marks}">
+    <label for="select">Student Name
+        <select id="select" th:field="*{id}" required>
+            <option th:each="per : ${persons}" th:value="${per.id}" th:text="${per.firstName}"></option>
+        </select>
+    </label>
+    <br>
+<!--    <input type="text" th:field="*{id}" required></label><br>-->
+    <label>Marks: <input type="text" th:field="*{marks}" required></label><br>
+    <label>Grade: <input type="text" th:field="*{grade}" required></label><br>
+    <label>Subject: <input type="text" th:field="*{subject}" required></label><br>
+<!--    <label>Student Id: <input type="text" th:field="*{student}" required></label><br>-->
+
+    <input type="submit" value="Add">
+</form>
+<a href="/marks">Click to Add/Show the Student marks</a>
+<br>
+<a href="/persons">Click to Add/Show the Student Detail</a>
+<br>
+<a href="/marks/above-60">Student that that got marks more than 60%</a>
+</body>
+</html>

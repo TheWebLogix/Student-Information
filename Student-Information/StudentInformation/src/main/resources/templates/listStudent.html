@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Persons</title>
+</head>
+<body>
+<a href="/marks">Click to Add/Show the Student Marks</a>
+<br>
+<a href="/persons">Click to Add/Show the Student Detail</a>
+<br>
+<a href="/persons/add">Add Students</a>
+<br>
+<a href="/marks/add">Add Marks</a>
+<h1>Students that scored more than 60% marks</h1>
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <tr th:each="name : ${listAbove60}">
+      <td>[[${name}]]</td>
+  </tr>
+</table>
+
+</body>
+</html>

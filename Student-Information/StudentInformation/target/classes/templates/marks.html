@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Persons</title>
+</head>
+<style>
+#students {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#students td, #students th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#students tr:nth-child(even){background-color: #f2f2f2;}
+
+#students tr:hover {background-color: #ddd;}
+
+#students th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<body>
+<h1>Student Marks</h1>
+
+<table id="students">
+  <tr>
+    <th>ID</th>
+    <th>Student Id</th>
+    <th>Marks</th>
+    <th>Grade</th>
+    <th>Subject</th>
+    <th>Action</th>
+
+
+  </tr>
+  <tr th:each="mark : ${marks}">
+    <td th:text="${mark.id}"></td>
+    <td th:text="${mark.student.id}"></td>
+    <td th:text="${mark.marks}"></td>
+    <td th:text="${mark.grade}"></td>
+    <td th:text="${mark.subject}"></td>
+
+    <td>
+      <a th:href="@{/marks/edit/{id}(id=${mark.id})}">Edit</a>
+      <a th:href="@{/marks/delete/{id}(id=${mark.id})}">Delete</a>
+    </td>
+  </tr>
+</table>
+<a href="/marks/add">Add Marks</a>
+<br>
+<a href="/persons">Click to Add/Show the Student Detail</a>
+<br>
+<a href="/marks/above-60">Student that got marks more than 60%</a>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons</title>
+</head>
+<style>
+#students {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#students td, #students th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#students tr:nth-child(even){background-color: #f2f2f2;}
+
+#students tr:hover {background-color: #ddd;}
+
+#students th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<body>
+<h1>Student Information</h1>
+<table id="students">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+        <th>Parents Name</th>
+        <th>City</th>
+        <th>Phone</th>
+        <th>Date Created/Modified</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.firstName}"></td>
+        <td th:text="${person.lastName}"></td>
+        <td th:text="${person.dob}"></td>
+        <td th:text="${person.address}"></td>
+        <td th:text="${person.parentsName}"></td>
+        <td th:text="${person.city}"></td>
+        <td th:text="${person.phone}"></td>
+        <td th:text="${person.timestamp}"></td>
+        <td>
+            <a th:href="@{/persons/edit/{id}(id=${person.id})}">Edit</a>
+            <a th:href="@{/persons/delete/{id}(id=${person.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<a href="/persons/add">Add Students</a>
+<br>
+<a href="/marks">Click to Add/Show the Student Marks</a>
+<br>
+<a href="/marks/above-60">Student that that got marks more than 60%</a>
+</body>
+</html>
